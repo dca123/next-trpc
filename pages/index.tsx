@@ -17,7 +17,7 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <p className={styles.description}>
+        <p className="text-3xl font-bold underline">
           Get started by editing{" "}
           <code className={styles.code}>pages/index.tsx</code>
         </p>
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
-
+          <div className="text-start">test</div>
           <a href="https://nextjs.org/learn" className={styles.card}>
             <h2>Learn &rarr;</h2>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
