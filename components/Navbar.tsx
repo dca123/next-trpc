@@ -1,19 +1,23 @@
+import Link from "next/link";
+
 export const Navbar = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-        <a className="btn btn-ghost normal-case text-xl">DocuManage</a>
+        <Link href="/">
+          <a className="btn btn-ghost normal-case text-xl">DocuManage</a>
+        </Link>
       </div>
       <div className="navbar-center">
         <ul className="menu menu-horizontal p-0">
           <li className="font-bold">
-            <a>Documents</a>
+            <Link href="/documents">Documents</Link>
           </li>
           <li className="font-">
-            <a>Users</a>
+            <Link href="/users">Users</Link>
           </li>
           <li className="font-">
-            <a>Licensees</a>
+            <Link href="/licensees">Licensees</Link>
           </li>
         </ul>
       </div>

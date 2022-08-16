@@ -1,34 +1,34 @@
-export const DocumentsTable = () => {
+import { Document, Status } from "@prisma/client";
+import { InferQueryOutput } from "../utils/trpc";
+
+type data = InferQueryOutput<"documents">;
+
+const StatusText = {
+  APPROVED: "Approved",
+  IN_REVIEW: "In Review",
+  PENDING: "Pending",
+  REJECTED: "Rejected",
+};
+
+export const DocumentsTable = ({ data }: { data: data }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table w-full">
         <thead>
           <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>Licensee</th>
+            <th>Serial</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
-          <tr>
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-          </tr>
+          {data.map((document) => (
+            <tr key={document.id}>
+              <td>{document.licensee.name}</td>
+              <td>{document.serial.toISOString().substring(0, 10)}</td>
+              <td>{StatusText[document.status]}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
