@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       <div className="p-6">
         <Navbar />
       </div>
-      <div>
+      <div className="px-6">
         <DocumentsTable />
       </div>
     </div>
