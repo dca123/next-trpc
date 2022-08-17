@@ -29,6 +29,11 @@ export const appRouter = trpc
         },
       });
     },
+  })
+  .query("licensees", {
+    async resolve() {
+      return await prisma.licensee.findMany();
+    },
   });
 
 export type AppRouter = typeof appRouter;

@@ -1,15 +1,20 @@
 import type { NextPage } from "next";
-import { DocumentsTable } from "../components/DocumentsTable";
-import { Navbar } from "../components/Navbar";
-import { trpc } from "../utils/trpc";
-import Head from "next/head";
 
 const Home: NextPage = () => {
-  const { isError, isLoading, isIdle, data } = trpc.useQuery(["documents"]);
-  if (isLoading || isError || isIdle) {
-    return <div>Loading...</div>;
-  }
-  return <DocumentsTable data={data} />;
+  return (
+    <div className="hero min-h-screen ">
+      <div className="hero-content text-center">
+        <div className="max-w-md">
+          <h1 className="text-5xl font-bold">DocuManage</h1>
+          <p className="py-6">
+            Welcome to DocuManage, a document management system for all of your
+            legal needs.
+          </p>
+          <button className="btn btn-primary">Get Started</button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Home;
