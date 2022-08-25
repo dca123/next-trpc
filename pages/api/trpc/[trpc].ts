@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Periodicity } from "@prisma/client";
 import * as trpc from "@trpc/server";
 import * as trpcNext from "@trpc/server/adapters/next";
 import { z } from "zod";
@@ -27,12 +27,36 @@ export const appRouter = trpc
         include: {
           licensee: true,
         },
+        orderBy: {
+          uploadDate: "desc",
+        },
       });
     },
   })
   .query("licensees", {
     async resolve() {
       return await prisma.licensee.findMany();
+    },
+  })
+  .mutation("createDocument", {
+    input: z.object({
+      licensee: z.string(),
+      period: z.nativeEnum(Periodicity),
+      date: z.date(),
+    }),
+    resolve: async ({ input }) => {
+      return await prisma.document.create({
+        data: {
+          periodicity: input.period,
+          serial: input.date,
+          status: "PENDING",
+          licensee: {
+            connect: {
+              id: input.licensee,
+            },
+          },
+        },
+      });
     },
   });
 

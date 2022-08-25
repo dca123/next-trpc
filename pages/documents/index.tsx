@@ -9,7 +9,7 @@ const DocumentsPage: NextPage = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="flex flex-col mt-5">
+    <div className="mt-5 flex flex-col">
       <div>
         <Link href="/documents/new">
           <button className="btn">New Document</button>
