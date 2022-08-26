@@ -41,6 +41,7 @@ export default withTRPC<AppRouter>({
     console.log({ url: getBaseUrl() });
     return {
       url: `${getBaseUrl()}/api/trpc`,
+      transformer: superjson,
       /**
        * @link https://react-query-v3.tanstack.com/reference/QueryClient
        */
