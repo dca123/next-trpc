@@ -23,4 +23,5 @@ export default withTRPC<AppRouter>({
       url,
     };
   },
+  ssr: true,
 })(MyApp);
