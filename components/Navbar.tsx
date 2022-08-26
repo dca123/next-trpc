@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export const Navbar = () => {
   const router = useRouter();
@@ -7,7 +8,7 @@ export const Navbar = () => {
     <div className="navbar bg-base-100">
       <div className="navbar-start">
         <Link href="/">
-          <a className="btn btn-ghost normal-case text-xl">DocuManage</a>
+          <a className="btn btn-ghost text-xl normal-case">DocuManage</a>
         </Link>
       </div>
       <div className="navbar-center">
@@ -25,9 +26,9 @@ export const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+        <label tabIndex={0} className="avatar btn btn-ghost btn-circle">
           <div className="w-10 rounded-full">
-            <img src="https://placeimg.com/80/80/people" />
+            <Image src="https://placeimg.com/80/80/people" />
           </div>
         </label>
       </div>

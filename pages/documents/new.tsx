@@ -6,13 +6,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { trpc } from "../../utils/trpc";
 
-const initialValues: Partial<Pick<Document, "periodicity" | "licenseeId">> = {};
-
-const validate = (values) => {
-  const errors = {};
-  if (!values.periodicity) {
-    errors.periodicity = "Required";
-  }
+const initialValues: Pick<Document, "periodicity" | "licenseeId"> = {
+  licenseeId: "",
+  periodicity: Periodicity.MONTHLY,
 };
 
 const NewDocumentPage: NextPage = () => {
@@ -48,7 +44,9 @@ const NewDocumentPage: NextPage = () => {
                     className="select select-bordered w-full max-w-xs"
                   >
                     {data?.map((licensee) => (
-                      <option value={licensee.id}>{licensee.name}</option>
+                      <option key={licensee.id} value={licensee.id}>
+                        {licensee.name}
+                      </option>
                     ))}
                   </Field>
                 </div>
